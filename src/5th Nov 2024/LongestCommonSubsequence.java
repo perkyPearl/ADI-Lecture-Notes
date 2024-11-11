@@ -17,6 +17,13 @@ public class LongestCommonSubsequence {
         }
 
         System.out.println(LCSFinder(s1, s2, n1, n2));
+        
+        for(int[] row: DP){
+            for(int val: row){
+                System.out.print(val + " ");
+            }
+            System.out.println();
+        }
     }
 
     static int LCSFinder(String s1, String s2, int l1, int l2){

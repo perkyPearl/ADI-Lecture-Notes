@@ -1,12 +1,12 @@
 public class Knapsack {
     static int[][] DP;
-    static int knapsack(int[] wt, int[] val, int W,int n){
+    static int knapsackMemo(int[] wt, int[] val, int W,int n){
         if(n==0 || W==0) return 0;
 
         if(wt[n-1] <= W){
-            DP[n][W] = Math.max(val[n-1] + knapsack(wt, val, W - wt[n-1], n - 1), knapsack(wt, val, W, n - 1));
+            DP[n][W] = Math.max(val[n-1] + knapsackMemo(wt, val, W - wt[n-1], n - 1), knapsackMemo(wt, val, W, n - 1));
         }else{
-            DP[n][W] = knapsack(wt, val, W, n-1);
+            DP[n][W] = knapsackMemo(wt, val, W, n-1);
         }
 
         return DP[n][W];
@@ -25,6 +25,6 @@ public class Knapsack {
             }
         }
 
-        System.out.println(knapsack(wt, val, W, n));
+        System.out.println(knapsackMemo(wt, val, W, n));
     }    
 }
